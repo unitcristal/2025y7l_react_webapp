@@ -1,3 +1,3 @@
-# 2025y7l react movie app
+# 2025y7l react web app
 
 react js fundamentals
