@@ -1,58 +1,34 @@
 import React from "react";
-import axios from "axios";
-import Movie from "./Movie";
+import { HashRouter, Route } from "react-router-dom";
+import Home from "./routes/Home";
+import About from "./routes/About";
+import Detail from "./routes/Detail";
+import Navigation from "./components/Navigation";
 import "./App.css";
-class App extends React.Component {
-  state = {
-    isloading: true,
-    movies: [],
-  };
 
-  getmovies = async () => {
-    const {
-      data: {
-        data: { movies },
-      },
-    } = await axios.get(
-      "https://yts-proxy.nomadcoders1.now.sh/list_movies.json"
-    );
-    console.log(movies);
-    // this.setState({ movies: movies }); // {from state: from axios}
-    this.setState({ movies, isloading: false });
-  };
-  componentDidMount() {
-    // setTimeout(() => {
-    //   this.setState({ isloading: false, book: true });
-    // }, 3000);
-    this.getmovies();
-  }
-  render() {
-    const { isloading, movies } = this.state;
-    console.log(movies);
-    return (
-      <section className="container">
-        {isloading ? (
-          <div className="loader">
-            <span className="loader__text">"loading..."</span>
-          </div>
-        ) : (
-          <div className="movies">
-            {movies.map((movie) => (
-              <Movie
-                key={movie.id}
-                id={movie.id}
-                year={movie.year}
-                title={movie.title}
-                summary={movie.summary}
-                poster={movie.medium_cover_image}
-                genres={movie.genres}
-              />
-            ))}
-          </div>
-        )}
-      </section>
-    );
-  }
+function App() {
+  return (
+    <>
+      <HashRouter>
+        <Navigation />
+        <Route path="/" exact={true} component={Home} />
+        <Route path="/about" component={About} />
+        <Route path="/movie:id" component={Detail} />
+      </HashRouter>
+      {/* <HashRouter>
+        <Route path="/home">
+          <h1>Home</h1>
+        </Route>
+        <Route path="/home/introduction">
+          <h1>Home/introduction</h1>
+        </Route>
+        <Route path="/about">
+          <h1>About</h1>
+        </Route>
+      </HashRouter> */}
+      <footer></footer>
+    </>
+  );
 }
 
 export default App;
