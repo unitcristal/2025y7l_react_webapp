@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "axios": "^1.7.9",
     "cra-template": "1.2.0",
     "prop-types": "^15.8.1",
     "react": "^19.0.0",
@@ -35,5 +36,8 @@
       "last 1 safari version"
     ]
   },
-  "homepage": "https://unitcristal.github.io/2025y7l_react_webapp"
+  "homepage": "https://unitcristal.github.io/2025y7l_react_webapp",
+  "devDependencies": {
+    "gh-pages": "^6.3.0"
+  }
 }
